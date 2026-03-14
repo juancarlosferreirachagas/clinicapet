@@ -1,26 +1,21 @@
 "use client";
 
 import { Suspense } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import type { Section } from "@/lib/types";
 
 function SidebarContent() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [cadastrosOpen, setCadastrosOpen] = useState(true);
-  const [atendimentoOpen, setAtendimentoOpen] = useState(true);
 
-  const SECTIONS: Section[] = ["pets", "vets", "tutores", "consultas", "pagamentos"];
-  const raw = searchParams.get("s");
-  const s: Section = raw && SECTIONS.includes(raw as Section) ? (raw as Section) : "pets";
   const isHome = pathname === "/";
-  const active: Section = !isHome && pathname.startsWith("/pet") ? "pets" : !isHome && pathname.startsWith("/vet") ? "vets" : !isHome && pathname.startsWith("/tutor") ? "tutores" : isHome ? s : "pets";
+  const active: Section = !isHome && pathname.startsWith("/pet") ? "pets" : "pets";
 
   const navLink = (section: Section, label: string, icon: string) => {
-    const href = section === "pets" ? "/" : `/?s=${section}`;
+    const href = "/";
     const isActive = active === section;
     return (
       <Link
@@ -89,22 +84,14 @@ function SidebarContent() {
           <h1 className="text-lg font-bold tracking-tight">Clínica Pet</h1>
         </Link>
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
-          {menuGroup("Cadastros", "folder", cadastrosOpen, setCadastrosOpen, (
+          {menuGroup("AC1 - Cadastro", "folder", cadastrosOpen, setCadastrosOpen, (
             <>
               {navLink("pets", "Pets", "pets")}
-              {navLink("tutores", "Tutores", "person")}
-              {navLink("vets", "Veterinários", "medical_services")}
-            </>
-          ))}
-          {menuGroup("Atendimento", "event_note", atendimentoOpen, setAtendimentoOpen, (
-            <>
-              {navLink("consultas", "Consultas", "calendar_today")}
-              {navLink("pagamentos", "Pagamentos", "payment")}
             </>
           ))}
         </nav>
         <div className="border-t border-white/10 px-5 py-4">
-          <small className="text-[0.75rem] font-medium text-white/50 leading-relaxed">Fluxo: Pets → Vets → Consultas → Pagamentos</small>
+          <small className="text-[0.75rem] font-medium text-white/50 leading-relaxed">Entrega AC1 — Cadastro de Pets</small>
         </div>
       </aside>
     </>
