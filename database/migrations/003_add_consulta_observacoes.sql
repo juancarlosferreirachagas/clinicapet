@@ -1,0 +1,1 @@
+ALTER TABLE consultas ADD COLUMN IF NOT EXISTS observacoes TEXT;
