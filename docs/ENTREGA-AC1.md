@@ -1,7 +1,7 @@
 # Clínica Pet — Board e Entregas
 
 > **Link para o professor:** Este documento serve como board do projeto e registro de commits.  
-> Acesse também: [Repositório GitHub](https://github.com) | [Vídeo AC1](#) | [App hospedado](#)
+> Acesse também: [Repositório](https://github.com/juancarlosferreirachagas/clinicapet) | [Board](https://github.com/users/juancarlosferreirachagas/projects/1) | [App](https://clinicapet.vercel.app) | [Vídeo](#)
 
 ---
 
@@ -46,10 +46,10 @@
 | Item | Link |
 |------|------|
 | Repositório | https://github.com/juancarlosferreirachagas/clinicapet |
-| Branch AC1 (rodar apenas cadastro de pets) | `git checkout ac1` |
-| Board | Este documento |
+| Board (GitHub Projects) | https://github.com/users/juancarlosferreirachagas/projects/1 |
+| App hospedado | https://clinicapet.vercel.app |
+| Branch AC1 | `git checkout ac1` |
 | Vídeo | *(adicionar link do YouTube após gravar)* |
-| App hospedado | *(adicionar link da Vercel/Netlify após deploy)* |
 
 ### Como rodar a AC1 (apenas cadastro de pets)
 
