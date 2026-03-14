@@ -1,0 +1,69 @@
+%% Diagrama de Classes - Clínica Pet
+%% Como exportar: copie o código em https://mermaid.live e exporte como PNG/SVG
+
+classDiagram
+    class Pet {
+        +Integer id
+        +String nome
+        +String especie
+        +String raca
+        +String nome_tutor
+        +String telefone
+        +String foto_url
+        +Date data_nascimento
+        +String sexo
+        +DateTime criado_em
+    }
+
+    class Veterinario {
+        +Integer id
+        +String nome
+        +String crmv
+        +String especialidade
+        +String email
+        +DateTime criado_em
+    }
+
+    class Consulta {
+        +Integer id
+        +Integer pet_id
+        +Integer veterinario_id
+        +Date data_consulta
+        +String hora
+        +String motivo
+        +String observacoes
+        +String status
+        +DateTime criado_em
+    }
+
+    class TipoServico {
+        +Integer id
+        +String nome
+        +String categoria
+        +String descricao
+    }
+
+    class ConsultaItem {
+        +Integer id
+        +Integer consulta_id
+        +Integer tipo_servico_id
+        +String observacoes
+        +String resultado
+        +Decimal valor
+    }
+
+    class Pagamento {
+        +Integer id
+        +Integer consulta_id
+        +Decimal valor
+        +String forma_pagamento
+        +String status
+        +DateTime pago_em
+        +DateTime criado_em
+    }
+
+    Pet "1" --> "*" Consulta : possui
+    Veterinario "1" --> "*" Consulta : atende
+    Consulta "1" --> "*" ConsultaItem : contém
+    Consulta "1" --> "*" Pagamento : gera
+    TipoServico "1" --> "*" ConsultaItem : classifica

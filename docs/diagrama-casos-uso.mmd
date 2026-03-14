@@ -1,0 +1,45 @@
+%% Diagrama de Casos de Uso - Clínica Pet
+%% Como exportar: copie o código em https://mermaid.live e exporte como PNG/SVG
+
+flowchart TB
+    subgraph Sistema["Sistema Clínica Pet"]
+        UC1[Cadastrar Pet]
+        UC2[Cadastrar Veterinário]
+        UC3[Agendar Consulta]
+        UC4[Registrar Pagamento]
+        UC5[Editar Pet]
+        UC6[Editar Veterinário]
+        UC7[Editar Consulta]
+        UC8[Editar Pagamento]
+        UC9[Excluir Pet]
+        UC10[Excluir Veterinário]
+        UC11[Cancelar Consulta]
+        UC12[Estornar Pagamento]
+        UC13[Adicionar Itens à Consulta]
+        UC14[Buscar Tutor]
+        UC15[Visualizar Ficha do Tutor]
+    end
+
+    A((Recepcionista))
+
+    A --> UC1
+    A --> UC2
+    A --> UC3
+    A --> UC4
+    A --> UC5
+    A --> UC6
+    A --> UC7
+    A --> UC8
+    A --> UC9
+    A --> UC10
+    A --> UC11
+    A --> UC12
+    A --> UC13
+    A --> UC14
+    A --> UC15
+
+    UC3 -.->|requer| UC1
+    UC3 -.->|requer| UC2
+    UC4 -.->|requer| UC3
+    UC13 -.->|requer| UC3
+    UC15 -.->|requer| UC1

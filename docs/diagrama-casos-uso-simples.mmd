@@ -1,0 +1,25 @@
+%% Diagrama de Casos de Uso - versão simplificada (CRUD por entidade)
+%% Bom para apresentar ao professor - mostra o fluxo principal
+
+flowchart TB
+    subgraph CasosDeUso["Casos de Uso"]
+        direction TB
+        UC1[Gerenciar Pets]
+        UC2[Gerenciar Veterinários]
+        UC3[Gerenciar Consultas]
+        UC4[Gerenciar Pagamentos]
+        UC5[Visualizar Tutores]
+    end
+
+    A((Usuário))
+
+    A --> UC1
+    A --> UC2
+    A --> UC3
+    A --> UC4
+    A --> UC5
+
+    UC3 -.->|depende de| UC1
+    UC3 -.->|depende de| UC2
+    UC4 -.->|depende de| UC3
+    UC5 -.->|depende de| UC1

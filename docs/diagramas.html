@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagramas - Clínica Pet</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 24px; max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 1.5rem; }
+    .diagrama { background: #f8fafc; padding: 24px; border-radius: 8px; margin: 24px 0; }
+    .mermaid { display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+  <h1>Diagrama de Classes</h1>
+  <div class="diagrama">
+    <div class="mermaid">
+classDiagram
+    class Pet {
+        +Integer id
+        +String nome
+        +String especie
+        +String raca
+        +String nome_tutor
+        +String telefone
+        +String foto_url
+        +Date data_nascimento
+        +String sexo
+    }
+    class Veterinario {
+        +Integer id
+        +String nome
+        +String crmv
+        +String especialidade
+        +String email
+    }
+    class Consulta {
+        +Integer id
+        +Integer pet_id
+        +Integer veterinario_id
+        +Date data_consulta
+        +String hora
+        +String motivo
+        +String observacoes
+        +String status
+    }
+    class TipoServico {
+        +Integer id
+        +String nome
+        +String categoria
+        +String descricao
+    }
+    class ConsultaItem {
+        +Integer id
+        +Integer consulta_id
+        +Integer tipo_servico_id
+        +String observacoes
+        +String resultado
+        +Decimal valor
+    }
+    class Pagamento {
+        +Integer id
+        +Integer consulta_id
+        +Decimal valor
+        +String forma_pagamento
+        +String status
+        +DateTime pago_em
+    }
+    Pet "1" --> "*" Consulta : possui
+    Veterinario "1" --> "*" Consulta : atende
+    Consulta "1" --> "*" ConsultaItem : contém
+    Consulta "1" --> "*" Pagamento : gera
+    TipoServico "1" --> "*" ConsultaItem : classifica
+    </div>
+  </div>
+
+  <h1>Diagrama de Casos de Uso (simplificado)</h1>
+  <div class="diagrama">
+    <div class="mermaid">
+flowchart TB
+    subgraph CasosDeUso["Casos de Uso"]
+        UC1[Gerenciar Pets]
+        UC2[Gerenciar Veterinários]
+        UC3[Gerenciar Consultas]
+        UC4[Gerenciar Pagamentos]
+        UC5[Visualizar Tutores]
+    end
+    A((Usuário))
+    A --> UC1
+    A --> UC2
+    A --> UC3
+    A --> UC4
+    A --> UC5
+    UC3 -.->|depende de| UC1
+    UC3 -.->|depende de| UC2
+    UC4 -.->|depende de| UC3
+    UC5 -.->|depende de| UC1
+    </div>
+  </div>
+
+  <h1>Diagrama de Casos de Uso (completo)</h1>
+  <div class="diagrama">
+    <div class="mermaid">
+flowchart TB
+    subgraph Sistema["Sistema Clínica Pet"]
+        UC1[Cadastrar Pet]
+        UC2[Cadastrar Veterinário]
+        UC3[Agendar Consulta]
+        UC4[Registrar Pagamento]
+        UC5[Editar Pet]
+        UC6[Editar Veterinário]
+        UC7[Editar Consulta]
+        UC8[Editar Pagamento]
+        UC9[Excluir Pet]
+        UC10[Excluir Veterinário]
+        UC11[Cancelar Consulta]
+        UC12[Estornar Pagamento]
+        UC13[Adicionar Itens à Consulta]
+        UC14[Buscar Tutor]
+        UC15[Visualizar Ficha do Tutor]
+    end
+    A((Recepcionista))
+    A --> UC1
+    A --> UC2
+    A --> UC3
+    A --> UC4
+    A --> UC5
+    A --> UC6
+    A --> UC7
+    A --> UC8
+    A --> UC9
+    A --> UC10
+    A --> UC11
+    A --> UC12
+    A --> UC13
+    A --> UC14
+    A --> UC15
+    UC3 -.->|requer| UC1
+    UC3 -.->|requer| UC2
+    UC4 -.->|requer| UC3
+    UC13 -.->|requer| UC3
+    UC15 -.->|requer| UC1
+    </div>
+  </div>
+
+  <p><small>Pressione Ctrl+P para imprimir/salvar como PDF</small></p>
+
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</body>
+</html>
