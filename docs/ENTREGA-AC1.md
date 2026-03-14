@@ -45,7 +45,19 @@
 
 | Item | Link |
 |------|------|
-| Repositório | *(adicionar link do GitHub após o push)* |
+| Repositório | https://github.com/juancarlosferreirachagas/clinicapet |
+| Branch AC1 (rodar apenas cadastro de pets) | `git checkout ac1` |
 | Board | Este documento |
 | Vídeo | *(adicionar link do YouTube após gravar)* |
 | App hospedado | *(adicionar link da Vercel/Netlify após deploy)* |
+
+### Como rodar a AC1 (apenas cadastro de pets)
+
+```bash
+git clone https://github.com/juancarlosferreirachagas/clinicapet.git
+cd clinicapet
+git checkout ac1
+npm install
+cp .env.example .env.local   # preencher SUPABASE_URL e SUPABASE_ANON_KEY
+npm run dev
+```
