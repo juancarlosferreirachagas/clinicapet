@@ -1,10 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { ConsultaDetalhe } from "@/components/ConsultaDetalhe";
+import { ComingSoonAC } from "@/components/ComingSoonAC";
 
 export default function ConsultaNoPetPage() {
-  const params = useParams();
-  const consultaId = params.consultaId as string;
-  return <ConsultaDetalhe id={consultaId} petId={params.id as string} />;
+  return <ComingSoonAC titulo="Consultas e Agenda" ac="AC3" data="10/05" icon="calendar_today" />;
 }

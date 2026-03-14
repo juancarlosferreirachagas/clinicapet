@@ -1,10 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { VetFicha } from "@/components/VetFicha";
+import { ComingSoonAC } from "@/components/ComingSoonAC";
 
 export default function VetPage() {
-  const params = useParams();
-  const id = params.id as string;
-  return <VetFicha id={id} />;
+  return <ComingSoonAC titulo="Cadastro de Veterinários" ac="AC2" data="12/04" icon="medical_services" />;
 }
